@@ -112,3 +112,70 @@ margin-top: 2em;
   height: 45vh;
   width: 45vw;
 }
+
+.login {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 90vh;
+}
+
+.login-container {
+height: 60vh;
+width: 35vw;
+background-color: var(--splash-color);
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.login-container h3{
+font-size: 4vw;
+margin-top: 1.5em;
+margin-bottom: 1em;
+
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login-container form input {
+  height: 5vh;
+  width: 15vw;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  
+}
+
+.login-container form input::placeholder {
+  color: black;
+  font-size: 1.5em;
+  user-select: none;
+}
+.login-container form button {
+  height: 5vh;
+  background-color: transparent;
+  border-radius: 30px;
+  border: 1px solid black;
+  font-size: 1.6em;
+  margin-top: 10px;
+  margin-bottom: 1em;
+}
+
+.login-container form button:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: 0.1s; 
+}
+
+.login-container h4 span:hover {
+transform: scale(1.05);
+transition: 0.1s;
+cursor: pointer;
+text-decoration: underline;
+}
