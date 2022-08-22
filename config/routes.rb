@@ -21,7 +21,14 @@ Rails.application.routes.draw do
   get "/users", to: "user#index"
   #delete user
   delete "/users/delete/:id", to: "user#delete_user"
-  patch "/user/edit/:id", to: "user#edit_user"
+  # edit username
+  patch "/user/edit/username/:id", to: "user#edit_username"
+  #edit password
+  patch "/user/edit/password/:id", to: "user#edit_password"
+  #edit profile pic
+  patch "/user/edit/profilepic/:id", to: "user#edit_profile_pic"
+  #edit email
+  patch "/user/edit/email/:id", to: "user#edit_email"
   post "/users", to: "user#new_user"
 
 
