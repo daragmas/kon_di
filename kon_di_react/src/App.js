@@ -18,7 +18,9 @@ function App() {
         <Route exact key={3} path='/register' element={<Register/>}/>
         <Route exact key={4} path='/signup' element={<Register/>}/>
         <Route exact key={5} path='/profile' element={<Profile/>}/>
-        <Route exact key={6} path='/entry' element={<Entry/>}/>
+        <Route  key={6} path='/entry' element={<Entry/>}>
+          <Route exact key={7} path=':entryid' />
+        </Route>
       </Routes>
       </Router>
     </div>
