@@ -113,14 +113,14 @@ margin-top: 2em;
   width: 45vw;
 }
 
-.login {
+.auth {
 display: flex;
 justify-content: center;
 align-items: center;
 height: 90vh;
 }
 
-.login-container {
+.auth-container {
 height: 60vh;
 width: 35vw;
 background-color: var(--splash-color);
@@ -129,20 +129,20 @@ flex-direction: column;
 align-items: center;
 }
 
-.login-container h3{
+.auth-container h3{
 font-size: 4vw;
 margin-top: 1.5em;
 margin-bottom: 1em;
 
 }
 
-.login-container form {
+.auth-container form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.login-container form input {
+.auth-container form input {
   height: 5vh;
   width: 15vw;
   padding: 10px;
@@ -152,12 +152,12 @@ margin-bottom: 1em;
   
 }
 
-.login-container form input::placeholder {
+.auth-container form input::placeholder {
   color: black;
   font-size: 1.5em;
   user-select: none;
 }
-.login-container form button {
+.auth-container form button {
   height: 5vh;
   background-color: transparent;
   border-radius: 30px;
@@ -167,13 +167,13 @@ margin-bottom: 1em;
   margin-bottom: 1em;
 }
 
-.login-container form button:hover{
+.auth-container form button:hover{
   transform: scale(1.05);
   cursor: pointer;
   transition: 0.1s; 
 }
 
-.login-container h4 span:hover {
+.auth-container h4 span:hover {
 transform: scale(1.05);
 transition: 0.1s;
 cursor: pointer;
