@@ -121,25 +121,20 @@ height: 90vh;
 }
 
 .auth-container {
-height: 60vh;
-width: 35vw;
 background-color: var(--splash-color);
 display: flex;
-flex-direction: column;
 align-items: center;
+border-radius: 10px;
+padding: 50px;
 }
 
 .auth-container h3{
 font-size: 4vw;
-margin-top: 1.5em;
-margin-bottom: 1em;
-
 }
 
 .auth-container form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 .auth-container form input {
@@ -163,7 +158,7 @@ margin-bottom: 1em;
   border-radius: 30px;
   border: 1px solid black;
   font-size: 1.6em;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 1em;
 }
 
@@ -178,4 +173,8 @@ transform: scale(1.05);
 transition: 0.1s;
 cursor: pointer;
 text-decoration: underline;
+}
+
+.reg-con h3{
+margin-bottom: 0.5em;
 }
