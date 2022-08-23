@@ -1,3 +1,6 @@
+import '../Home.css'
+import '../App.css'
+
 const Home = () => {
     return (
         <div className="home">

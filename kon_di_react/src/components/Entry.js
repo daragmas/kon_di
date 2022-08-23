@@ -1,3 +1,5 @@
+import '../Entry.css'
+
 const Entry = () => {
 return (
     <div className="entry">

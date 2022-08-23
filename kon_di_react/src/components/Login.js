@@ -1,3 +1,6 @@
+import '../Auth.css'
+import '../App.css'
+
 const Login = () => {
 return (
     <div className="auth">

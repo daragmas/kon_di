@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    height: 10vh;
+    background-color: var(--dark-splash-color);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  
+  .logo{
+    margin-right: auto;
+  }
+  
+  .nav-list {
+  display: flex;
+  list-style-type: none;
+  margin-right: 5%;
+  margin-bottom: 0;
+  
+  }
+
+  
+  .nav-items {
+  color: black;
+  text-decoration: none;
+  margin: 0 5%;
+  font-size: 1.5vw;
+  margin-bottom: 0;
+  margin-left: 1vw;
+  }
+  
+  .nav-items:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  }
