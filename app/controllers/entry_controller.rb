@@ -9,6 +9,10 @@ class EntryController < ApplicationController
         render json:Entry.where(user_id:params[:id])
     end
 
+    def entries_get_single
+        render json:Entry.find_by(id:params[:id])
+    end
+
     def delete_entry
         Entry.find(params[:id]).destroy
         render json:{message:"Deleted Entry #{params[:id]}"}
