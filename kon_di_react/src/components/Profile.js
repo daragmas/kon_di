@@ -6,7 +6,6 @@ const Profile = () => {
     const [selectedEntry, setSelectedEntry] = useState({})
 
     let params = useParams()
-
     useEffect(() => {
         const getEntries = async () => {
             const req = await fetch(`http://127.0.0.1:3000/entries/2`) //TODO: Change to dynamic id!!!
