@@ -66,7 +66,7 @@ const Entry = () => {
                     value={formData.content} 
                     name='content'/>
                 <div className="entry-btn-container">
-                    <button className="btn-hover" onClick={handleDiscard}>Discard Changes</button>
+                    <button className="btn-hover" onClick={handleDiscard}>Discard</button>
                     <button className="btn-hover" onClick={handleSave}>Save</button>
                 </div>
             </form>

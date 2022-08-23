@@ -28,7 +28,7 @@ const Profile = () => {
         </li>) :
         <li id='no-entries'>You have no entries</li>
 
-    const handleDeleteClick = ()=>{
+    const handleDeleteClick = () => {
         window.confirm('Delete Entry?') ? fetch(`http://127.0.0.1:3000/entries/delete/${selectedEntry.id}`) : console.log('No Delete')
     }
 
@@ -43,8 +43,16 @@ const Profile = () => {
                 <h3 className='profile-selected-entry-title'>{selectedEntry.title}</h3>
                 <small>{selectedEntry.created_at}</small>
                 <p>{selectedEntry.content}</p>
-                <button onClick={handleDeleteClick}>Delete Entry</button>
-                <NavLink to={`/entry/${selectedEntry.id}`}>Edit Entry</NavLink>
+                {selectedEntry.id ? 
+                    (
+                        <>
+                            <button onClick={handleDeleteClick}>Delete Entry</button>
+                            <NavLink to={`/entry/${selectedEntry.id}`}>Edit Entry</NavLink>
+                        </>
+                    ):
+                    null
+                }
+
             </div>
             <NavLink to='/entry'>New Entry</NavLink>
         </div>
