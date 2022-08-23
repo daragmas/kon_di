@@ -1,14 +1,16 @@
 import '../Entry.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 
 const Entry = () => {
     const [formData, setFormData] = useState({
         title:'',
-        content:''
+        content:'',
+        user_id:2 //TODO: CHANGE TO GET FROM SESSION INFORMATION
     })
 
     let params = useParams()
+    const navigate = useNavigate()
     // console.log('params: ', params)
 
     useEffect(() => {
@@ -26,7 +28,20 @@ const Entry = () => {
         setFormData({...formData, [key]:value})
     }
 
-    // console.log(formData)
+    const handleSave = async (e) =>{
+        e.preventDefault()
+        let url = params.entryid ? `http://localhost:3000/entries/edit/${params.entryid}` : `http://localhost:3000/entries/`
+        let method = params.entryid? 'PATCH': 'POST'
+        const req = await fetch(url, {
+            method: method,
+            body: JSON.stringify(formData),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        const res = await req.json()
+        console.log(res)
+        navigate('/profile')
+    }
+    console.log(formData)
 
     return (
         <div className="entry">
@@ -47,7 +62,7 @@ const Entry = () => {
                     name='content'/>
                 <div className="entry-btn-container">
                     <button className="btn-hover">Discard Changes</button>
-                    <button className="btn-hover">Save</button>
+                    <button className="btn-hover" onClick={handleSave}>Save</button>
                 </div>
             </form>
         </div>
