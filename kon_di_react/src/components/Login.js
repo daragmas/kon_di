@@ -1,7 +1,7 @@
 const Login = () => {
 return (
     <div className="auth">
-        <div className='auth-container'>
+        <div className='auth-container login'>
             <h3>LOGIN</h3>
             <hr/>
             <form>
