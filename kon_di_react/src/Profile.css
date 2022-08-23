@@ -1,0 +1,16 @@
+.profile-container {
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#profile-entries-list-container {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+
+}
+
+.entries-list {
+    list-style-type: none;
+}

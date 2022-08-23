@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
+import '../Profile.css'
+import '../App.css'
 
 const Profile = () => {
     const [entries, setEntries] = useState([])
@@ -30,36 +32,39 @@ const Profile = () => {
 
     const entries_lis = entries.length !== 0 ?
         entries.map((entry, index) => <li key={entry.title} className='profile-entry'>
-            <span className='profile-entry-date'>{entry.created_at}</span> | <span className='profile-entry-title' id={index} onClick={handleEntryLiClick}>{entry.title}</span>
+            <span className='profile-entry-date'>{entry.created_at}</span> | <span className='profile-entry-title' onClick={handleEntryLiClick}><b id={index}>{entry.title}</b></span>
         </li>) :
         <li id='no-entries'>You have no entries</li>
 
-   
+
 
     return (
-        <div>
-            <div className="profile-entries-list-container">
-                <ul className='entries-list'>
-                    {entries_lis}
-                </ul>
+        <>
+            <div className='profile-container'>
+                <div id="profile-entries-list-container">
+                    <label id='profile-entries-label' htmlFor='entries-list'><h2>Entries</h2></label>
+                    <ul className='entries-list'>
+                        {entries_lis}
+                    </ul>
+                </div>
+                
+                <div id='profile-selected-entry-container'>
+                    <h3 className='profile-selected-entry-title'>{selectedEntry.title}</h3>
+                    <small>{selectedEntry.created_at}</small>
+                    <p>{selectedEntry.content}</p>
+                    {selectedEntry.id ?
+                        (
+                            <>
+                                <button onClick={handleDeleteClick}>Delete Entry</button>
+                                <NavLink to={`/entry/${selectedEntry.id}`}>Edit Entry</NavLink>
+                            </>
+                        ) :
+                        null
+                    }
+                </div>
             </div>
-            <div className='profile-selected-entry-container'>
-                <h3 className='profile-selected-entry-title'>{selectedEntry.title}</h3>
-                <small>{selectedEntry.created_at}</small>
-                <p>{selectedEntry.content}</p>
-                {selectedEntry.id ? 
-                    (
-                        <>
-                            <button onClick={handleDeleteClick}>Delete Entry</button>
-                            <NavLink to={`/entry/${selectedEntry.id}`}>Edit Entry</NavLink>
-                        </>
-                    ):
-                    null
-                }
-
-            </div>
-            <NavLink to='/entry'>New Entry</NavLink>
-        </div>
+            <NavLink className="profile-navlink-new-entry" to='/entry'>New Entry</NavLink>
+        </>
     )
 }
 
