@@ -28,6 +28,11 @@ const Entry = () => {
         setFormData({...formData, [key]:value})
     }
 
+    const handleDiscard = (e) =>{
+        e.preventDefault()
+        window.confirm('Discard Changes?') ? navigate('/profile'): console.log('No Discard')
+    }
+
     const handleSave = async (e) =>{
         e.preventDefault()
         let url = params.entryid ? `http://localhost:3000/entries/edit/${params.entryid}` : `http://localhost:3000/entries/`
@@ -61,7 +66,7 @@ const Entry = () => {
                     value={formData.content} 
                     name='content'/>
                 <div className="entry-btn-container">
-                    <button className="btn-hover">Discard Changes</button>
+                    <button className="btn-hover" onClick={handleDiscard}>Discard Changes</button>
                     <button className="btn-hover" onClick={handleSave}>Save</button>
                 </div>
             </form>
