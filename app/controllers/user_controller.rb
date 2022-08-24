@@ -44,6 +44,7 @@ class UserController < ApplicationController
         token = JWT.encode payload, nil, 'none'
 
         User.create!(params[:id]).update(username: params[:username], password: token, profile_pic: params[:profile_pic], email: params[:email]) 
-        render json:{message:"Created user!"}
+        user = User.find_by(username: params[:username])
+        render json: {hashed_password: user[:id]}
     end
 end
