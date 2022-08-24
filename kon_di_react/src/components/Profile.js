@@ -6,11 +6,12 @@ import '../App.css'
 const Profile = () => {
     const [entries, setEntries] = useState([])
     const [selectedEntry, setSelectedEntry] = useState({})
-
+    const user_id = document.cookie.split('=')[1]
     let params = useParams()
 
     const getEntries = async () => {
-        const req = await fetch(`http://127.0.0.1:3000/entries/2`) //TODO: Change to dynamic id!!!
+        
+        const req = await fetch(`http://127.0.0.1:3000/entries/${user_id}`) //TODO: Change to dynamic id!!!
         const res = await req.json()
         setEntries(res)
     }
@@ -40,6 +41,12 @@ const Profile = () => {
 
     return (
         <>
+            <NavLink
+                className="profile-navlink-new-entry"
+                style={{ margin:"auto", alignSelf:"center", display:"flex", justifyContent:"center"}}
+                to='/entry'>
+                New Entry
+            </NavLink>
             <div className='profile-container'>
                 <div id="profile-entries-list-container">
                     <label id='profile-entries-label' htmlFor='entries-list'><h2>Entries</h2></label>
@@ -47,7 +54,6 @@ const Profile = () => {
                         {entries_lis}
                     </ul>
                 </div>
-                
                 <div id='profile-selected-entry-container'>
                     <h3 className='profile-selected-entry-title'>{selectedEntry.title}</h3>
                     <small>{selectedEntry.created_at}</small>
@@ -62,8 +68,9 @@ const Profile = () => {
                         null
                     }
                 </div>
+
             </div>
-            <NavLink className="profile-navlink-new-entry" to='/entry'>New Entry</NavLink>
+            
         </>
     )
 }

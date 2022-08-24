@@ -6,7 +6,7 @@ const Entry = () => {
     const [formData, setFormData] = useState({
         title:'',
         content:'',
-        user_id:2 //TODO: CHANGE TO GET FROM SESSION INFORMATION
+        user_id: document.cookie.split('=')[1] //TODO: CHANGE TO GET FROM SESSION INFORMATION
     })
 
     let params = useParams()

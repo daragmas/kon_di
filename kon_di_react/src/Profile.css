@@ -2,15 +2,21 @@
     margin: auto;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 #profile-entries-list-container {
     display: flex;
     align-self: flex-start;
     flex-direction: column;
-
 }
 
 .entries-list {
     list-style-type: none;
 }
+
+/* .profile-navlink-new-entry{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+} */
