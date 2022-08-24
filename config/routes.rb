@@ -31,8 +31,11 @@ Rails.application.routes.draw do
   patch "/user/edit/profilepic/:id", to: "user#edit_profile_pic"
   #edit email
   patch "/user/edit/email/:id", to: "user#edit_email"
+  #create new user
   post "/users", to: "user#new_user"
 
+
+  post '/auth/login', to: 'auth#login'
 
   #YAy Organization
 end
