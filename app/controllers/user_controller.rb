@@ -1,3 +1,4 @@
+require 'jwt'
 class UserController < ApplicationController
     protect_from_forgery with: :null_session
     skip_before_action :verify_authenticity_token
@@ -37,7 +38,12 @@ class UserController < ApplicationController
     
 
     def new_user 
-        User.create!(params[:id]).update(username: params[:username], password: params[:password],profile_pic: params[:profile_pic], email: params[:email]) 
+
+        payload = { data: params[:password] }
+        # IMPORTANT: set nil as password parameter
+        token = JWT.encode payload, nil, 'none'
+
+        User.create!(params[:id]).update(username: params[:username], password: token, profile_pic: params[:profile_pic], email: params[:email]) 
         render json:{message:"Created user!"}
     end
 end
