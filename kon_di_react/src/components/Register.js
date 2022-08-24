@@ -1,8 +1,10 @@
 import '../Auth.css'
 import '../App.css'
+import { useNavigate } from 'react-router-dom'
 
 import {useState, useEffect} from 'react'
 const Register = () => {
+    const navigate = useNavigate()
 
     const [formChange, setFormChange] = useState({})
     const handleChange = (key, value) => {
@@ -28,6 +30,7 @@ const Register = () => {
         const handleSubmit = (e) => {
             e.preventDefault()
             postUser()
+            navigate('/profile')
         }
     return (
         <div className="auth reg">
