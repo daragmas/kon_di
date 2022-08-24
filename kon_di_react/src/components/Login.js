@@ -1,9 +1,11 @@
 import '../Auth.css'
 import '../App.css'
-import {useState} from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [data, setData] = useState({})
+    let navigate = useNavigate()
 
     const getDate = () => {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -15,17 +17,17 @@ const Login = () => {
         let hour = d.getHours()
         return `${dayL}, ${day} ${month} ${year} ${hour} UTC`
     }
-        const getData = async() => {
-            let req = await fetch('http://localhost:3000/auth/login', {
-                method: 'POST',
-                headers: {
-                    "Content-type":"application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            let res= await req.json()
-            document.cookie = `hash=${res.hashed_password}; expires=${getDate()}`
-        }
+    const getData = async () => {
+        let req = await fetch('http://localhost:3000/auth/login', {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        let res = await req.json()
+        document.cookie = `hash=${res.hashed_password}; expires=${getDate()}`
+    }
 
 
     const handleChange = (key, value) => {
@@ -33,27 +35,28 @@ const Login = () => {
             ...data,
             [key]: value
         })
-}
+    }
 
-const handleSubmit = (e) => {
-e.preventDefault()
-getData()
-console.log(document.cookie)
-}
-return (
-    <div className="auth">
-        <div className='auth-container login'>
-            <h3>LOGIN</h3>
-            <hr/>
-            <form onSubmit={handleSubmit}>
-                <input type='text' name='username' placeholder='username' onChange={(e)=>handleChange(e.target.name, e.target.value)}/>
-                <input type='password'placeholder='password' name='password'onChange={(e)=>handleChange(e.target.name, e.target.value)}/>
-                <button>LOGIN</button>
-            </form>
-            <h4>Don't have an account? <span>REGISTER</span></h4>
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        getData()
+        console.log(document.cookie)
+        document.cookie != '' ? navigate('/profile') : window.Error("Invalid username or password") 
+    }
+    return (
+        <div className="auth">
+            <div className='auth-container login'>
+                <h3>LOGIN</h3>
+                <hr />
+                <form onSubmit={handleSubmit}>
+                    <input type='text' name='username' placeholder='username' onChange={(e) => handleChange(e.target.name, e.target.value)} />
+                    <input type='password' placeholder='password' name='password' onChange={(e) => handleChange(e.target.name, e.target.value)} />
+                    <button>LOGIN</button>
+                </form>
+                <h4>Don't have an account? <span>REGISTER</span></h4>
+            </div>
         </div>
-    </div>
-)
+    )
 }
 
 export default Login
