@@ -24,7 +24,7 @@ const Register = () => {
             document.cookie = `hash=${res.hashed_password}`
         }
 
-console.log(document.cookie)
+console.log(document.cookie.split('=')[1])
 
         const handleSubmit = (e) => {
             e.preventDefault()

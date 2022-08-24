@@ -11,6 +11,7 @@ return (
             <NavLink style={{textDecoration: 'none'}} to='/about'><li className='nav-items btn-hover'>About</li></NavLink>
             <NavLink style={{textDecoration: 'none'}}to='/login'><li className='nav-items btn-hover'>LOGIN</li></NavLink>
             <NavLink style={{textDecoration: 'none'}} to='/register'><li className='nav-items btn-hover'>REGISTER</li></NavLink>
+            <NavLink onClick={()=> {document.cookie = 'hash='}} style={{textDecoration: 'none'}} to='/'><li className='nav-items btn-hover'>LOGOUT</li></NavLink>
         </ul>
     </nav>
 )
