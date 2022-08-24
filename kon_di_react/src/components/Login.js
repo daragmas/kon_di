@@ -7,16 +7,16 @@ const Login = () => {
     const [data, setData] = useState({})
     let navigate = useNavigate()
 
-    const getDate = () => {
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        const d = new Date()
-        let year = d.getFullYear()
-        let day = d.getDate() + 1
-        let month = d.getMonth()
-        let dayL = days[d.getDay() + 1];
-        let hour = d.getHours()
-        return `${dayL}, ${day} ${month} ${year} ${hour} UTC`
-    }
+    // const getDate = () => {
+    //     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    //     const d = new Date()
+    //     let year = d.getFullYear()
+    //     let day = d.getDate() + 1
+    //     let month = d.getMonth()
+    //     let dayL = days[d.getDay() + 1];
+    //     let hour = d.getHours()
+    //     return `${dayL}, ${day} ${month} ${year} ${hour} UTC`
+    // }
     const getData = async () => {
         let req = await fetch('http://localhost:3000/auth/login', {
             method: 'POST',
@@ -26,9 +26,9 @@ const Login = () => {
             body: JSON.stringify(data)
         })
         let res = await req.json()
-        document.cookie = `hash=${res.hashed_password}; expires=${getDate()}`
+        document.cookie = `hash=${res.hashed_password}}`
     }
-
+//Change cookie
 
     const handleChange = (key, value) => {
         setData({
@@ -40,7 +40,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         getData()
-        console.log(document.cookie)
         document.cookie != '' ? navigate('/profile') : window.Error("Invalid username or password") 
     }
     return (

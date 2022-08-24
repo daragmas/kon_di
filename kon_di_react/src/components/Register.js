@@ -23,8 +23,7 @@ const Register = () => {
             let res = await req.json()
             document.cookie = `hash=${res.hashed_password}`
         }
-
-console.log(document.cookie.split('=')[1])
+//Change cookie
 
         const handleSubmit = (e) => {
             e.preventDefault()
