@@ -3,7 +3,7 @@ import '../App.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Login = () => {
+const Login = ({ onLoginChange }) => {
     const [data, setData] = useState({})
     let navigate = useNavigate()
 
@@ -26,13 +26,13 @@ const Login = () => {
             body: JSON.stringify(data)
         })
         let res = await req.json()
-        if (req.ok){
-        document.cookie = `hash=${res.hashed_user}`
-        }else {
+        if (req.ok) {
+            document.cookie = `hash=${res.hashed_user}`
+        } else {
             document.cookie = ''
         }
     }
-//Change cookie
+    //Change cookie
 
     const handleChange = (key, value) => {
         setData({
@@ -44,9 +44,17 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         getData()
-        document.cookie.includes('.') ? navigate('/profile') : window.Error("Invalid username or password") 
+        if (document.cookie.includes('.')) {
+            navigate('/profile')
+            onLoginChange(true)
+        }
+        else {
+            window.Error("Invalid username or password")
+        }
     }
-    console.log(document.cookie)
+
+    // console.log(document.cookie)
+
     return (
         <div className="auth">
             <div className='auth-container login'>

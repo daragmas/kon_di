@@ -3,29 +3,36 @@ import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import '../Profile.css'
 import '../App.css'
 
-const Profile = () => {
+const Profile = ({ loginState }) => {
     const [entries, setEntries] = useState([])
     const [selectedEntry, setSelectedEntry] = useState({})
     let navigate = useNavigate()
 
-    const user_id = document.cookie.split('=')[1]
+
     let params = useParams()
+
     const getEntries = async () => {
-        const req = await fetch(`http://127.0.0.1:3000/entries/user`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Cookie" : document.cookie},
-            body: JSON.stringify({user_id: user_id})
-        }) //TODO: Change to dynamic id!!
-        const res = await req.json()
-        setEntries(res)
+        const user_id = document.cookie.split('=')[1]
+        try {
+            const req = await fetch(`http://127.0.0.1:3000/entries/user`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Cookie": document.cookie
+                },
+                body: JSON.stringify({ user_id: user_id })
+            })
+            const res = await req.json()
+            setEntries(res)
+        }
+        catch {
+            navigate('/login')
+        }
     }
 
 
     useEffect(() => {
         getEntries()
-
     }, [])
 
     const handleEntryLiClick = (e) => {
@@ -43,13 +50,11 @@ const Profile = () => {
         </li>) :
         <li id='no-entries'>You have no entries</li>
 
-
-
     return (
         <>
             <NavLink
                 className="profile-navlink-new-entry"
-                style={{ margin:"auto", alignSelf:"center", display:"flex", justifyContent:"center"}}
+                style={{ margin: "auto", alignSelf: "center", display: "flex", justifyContent: "center" }}
                 to='/entry'>
                 New Entry
             </NavLink>
@@ -76,7 +81,7 @@ const Profile = () => {
                 </div>
 
             </div>
-            
+
         </>
     )
 }
