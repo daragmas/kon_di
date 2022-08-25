@@ -14,7 +14,7 @@ const Profile = ({ loginState }) => {
     const getEntries = async () => {
         const user_id = document.cookie.split('=')[1]
         try {
-            const req = await fetch(`http://127.0.0.1:3000/entries/user`, {
+            const req = await fetch(`http://localhost:3000/entries/user`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const Profile = ({ loginState }) => {
     }
 
     const handleDeleteClick = () => {
-        window.confirm('Delete Entry?') ? fetch(`http://127.0.0.1:3000/entries/delete/${selectedEntry.id}`, { method: "DELETE" }) : console.log('No Delete')
+        window.confirm('Delete Entry?') ? fetch(`http://localhost:3000/entries/delete/${selectedEntry.id}`, { method: "DELETE" }) : console.log('No Delete')
         getEntries()
     }
 

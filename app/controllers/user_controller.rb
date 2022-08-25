@@ -38,7 +38,7 @@ class UserController < ApplicationController
     
 
     def new_user 
-
+        puts params
         payload = { data: params[:password] }
         # IMPORTANT: set nil as password parameter
         token = JWT.encode payload, nil, 'none'
