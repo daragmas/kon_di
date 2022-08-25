@@ -26,7 +26,7 @@ const Profile = ({ loginState }) => {
             setEntries(res)
         }
         catch {
-            navigate('/login')
+           if(!loginState) navigate('/login')
         }
     }
 
