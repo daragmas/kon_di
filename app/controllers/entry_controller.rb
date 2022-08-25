@@ -1,12 +1,21 @@
+require 'jwt'
 class EntryController < ApplicationController
     protect_from_forgery with: :null_session
-
+    skip_before_action :verify_authenticity_token
     def index
         render json:Entry.all
     end
 
     def entries_by_user
-        render json:Entry.where(user_id:params[:id])
+        token = params[:user_id]
+        if token 
+            decoded_token = JWT.decode token, nil, false
+            # render json: { token_id: decoded_token[0]["data"], param_id: params[:id].to_i}
+            user = User.find_by(username: decoded_token[0]["data"])
+            render json: Entry.where(user_id: user["id"])
+        else 
+            render json: [{message: "Coudn't verify user", params: params}]
+        end
     end
 
     def entries_get_single
@@ -25,7 +34,11 @@ class EntryController < ApplicationController
 
     def new_entry
         #replace user_id with header!!!
-        Entry.create!(user_id:params[:user_id], title:params[:title], content:params[:content])
+        token = request.headers["Cookie"]
+        decoded_token = JWT.decode token, nil, false
+        # render json: { token_id: decoded_token[0]["data"], param_id: params[:id].to_i}
+        user = User.find_by(username: decoded_token[0]["data"])
+        Entry.create!(user_id:user["id"], title:params[:title], content:params[:content])
         render json:{message:"Created Entry!"}
     end
 end

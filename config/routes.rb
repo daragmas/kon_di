@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #get all entries
   get "/entries", to: "entry#index"
   #get entry by user id
-  get "/entries/:id", to: "entry#entries_by_user"
+  post "/entries/user", to: "entry#entries_by_user"
   #get single entry
   get "entries/edit/:id", to: "entry#entries_get_single"
   #delete entry
