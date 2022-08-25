@@ -14,7 +14,7 @@
     .hero-container {
       width: 35%;
       margin-left: 15%;
-      background-color: var(--splash-color);
+      background-color: var(--dark-splash-color);
       display: flex;
       align-items: center;
       flex-direction: column;

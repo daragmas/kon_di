@@ -34,8 +34,8 @@ const NavBar = ({onLoginChange, loginState}) => {
         <nav className="navbar">
             <div className='logo' >LOGO</div>
             <ul className='nav-list'>
-                <NavLink style={{ textDecoration: 'none' }} to='/'><li className='nav-items btn-hover'>Home</li></NavLink>
-                <NavLink style={{ textDecoration: 'none' }} to='/about'><li className='nav-items btn-hover'>About</li></NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to='/'><li className='nav-items btn-hover'>HOME</li></NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to='/about'><li className='nav-items btn-hover'>ABOUT</li></NavLink>
                 {buttons}
             </ul>
         </nav>
