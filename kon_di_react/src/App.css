@@ -18,3 +18,11 @@ font-family: Manrope;
   background-color: var(--main-color);
 }
 
+#footer{
+  bottom: 2%;
+  position:fixed;
+  margin: auto;
+  width:100%;
+  text-align: center;
+}
+

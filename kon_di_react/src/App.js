@@ -31,6 +31,7 @@ function App() {
             <Route exact key={7} path=':entryid' />
           </Route>
         </Routes>
+        <p id='footer'>Site by <a href='https://www.linkedin.com/in/anastasiasirman/'>Anastasia Sirman</a> and <a href='https://www.linkedin.com/in/nathanielpwolf/'>Nate Wolf</a></p>
       </Router>
     </div>
   );

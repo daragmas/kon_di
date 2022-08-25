@@ -1,25 +1,4 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A site for keeping your diary entries safe and secure. Not only are the users' login information secure, their diary entries are also encrypted. Not even the people looking at the database can read them!
 # kon_di
