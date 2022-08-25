@@ -1,10 +1,11 @@
 .navbar {
     display: flex;
     height: 10vh;
-    background-color: #fffffe;
+    background-color: #73A9AD;
     justify-content: center;
     align-items: center;
     margin-bottom: 0;
+    border-bottom: 1px solid rgba(0,0,0, 0.1);
   }
   
   .logo{
