@@ -27,7 +27,8 @@ const Login = () => {
         })
         let res = await req.json()
         if (req.ok){
-        document.cookie = `hash=${res.hashed_user}`
+        let tommorow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
+        document.cookie = `hash=${res.hashed_user}; expires=` + tommorow.toUTCString()
         }else {
             document.cookie = ''
         }
