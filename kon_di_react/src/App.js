@@ -1,5 +1,5 @@
 import NavBar from './components/Navbar';
-import './App.css';
+import './styles/App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Profile from './components/Profile';

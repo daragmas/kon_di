@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import '../navbar.css'
-import '../App.css'
+import '../styles/navbar.css'
+import '../styles/App.css'
 import { useEffect, useState } from 'react'
 
 const NavBar = ({onLoginChange, loginState}) => {
