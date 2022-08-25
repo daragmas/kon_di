@@ -34,7 +34,7 @@ class EntryController < ApplicationController
 
     def new_entry
         #replace user_id with header!!!
-        token = request.headers["Cookie"]
+        token = params[:user_id]
         decoded_token = JWT.decode token, nil, false
         # render json: { token_id: decoded_token[0]["data"], param_id: params[:id].to_i}
         user = User.find_by(username: decoded_token[0]["data"])
