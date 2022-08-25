@@ -1,29 +1,35 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { NavLink, useParams, useNavigate } from 'react-router-dom'
 import '../Profile.css'
 import '../App.css'
 
 const Profile = () => {
     const [entries, setEntries] = useState([])
     const [selectedEntry, setSelectedEntry] = useState({})
+    let navigate = useNavigate()
+
     const user_id = document.cookie.split('=')[1]
     let params = useParams()
-
     const getEntries = async () => {
-        
-        const req = await fetch(`http://127.0.0.1:3000/entries/${user_id}`) //TODO: Change to dynamic id!!!
+        const req = await fetch(`http://127.0.0.1:3000/entries/user`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Cookie" : document.cookie},
+            body: JSON.stringify({user_id: user_id})
+        }) //TODO: Change to dynamic id!!
         const res = await req.json()
         setEntries(res)
     }
 
+
     useEffect(() => {
         getEntries()
+
     }, [])
 
     const handleEntryLiClick = (e) => {
-        // console.log(e.target.id)
         setSelectedEntry(entries[e.target.id])
-        console.log(entries[e.target.id])
     }
 
     const handleDeleteClick = () => {

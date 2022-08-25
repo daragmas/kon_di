@@ -26,7 +26,11 @@ const Login = () => {
             body: JSON.stringify(data)
         })
         let res = await req.json()
-        document.cookie = `hash=${res.hashed_password}}`
+        if (req.ok){
+        document.cookie = `hash=${res.hashed_user}`
+        }else {
+            document.cookie = ''
+        }
     }
 //Change cookie
 
@@ -40,8 +44,9 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         getData()
-        document.cookie != '' ? navigate('/profile') : window.Error("Invalid username or password") 
+        document.cookie.includes('.') ? navigate('/profile') : window.Error("Invalid username or password") 
     }
+    console.log(document.cookie)
     return (
         <div className="auth">
             <div className='auth-container login'>

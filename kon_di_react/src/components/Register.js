@@ -23,7 +23,7 @@ const Register = () => {
                 body: JSON.stringify(formChange)
             })
             let res = await req.json()
-            document.cookie = `hash=${res.hashed_password}`
+            document.cookie = `hash=${res.hashed_user}`
         }
 //Change cookie
 

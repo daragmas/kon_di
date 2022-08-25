@@ -42,9 +42,11 @@ class UserController < ApplicationController
         payload = { data: params[:password] }
         # IMPORTANT: set nil as password parameter
         token = JWT.encode payload, nil, 'none'
-
-        User.create!(params[:id]).update(username: params[:username], password: token, profile_pic: params[:profile_pic], email: params[:email]) 
+        User.create!(username: params[:username], password: token, profile_pic: params[:profile_pic], email: params[:email]) 
         user = User.find_by(username: params[:username])
-        render json: {hashed_password: user[:id]}
+        payload = {data: user[:id]}
+        hashed_user = JWT.encode payload, nil, 'none'
+        render json: {hashed_user: hashed_user}
+
     end
 end
