@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
-import '../Profile.css'
-import '../App.css'
+import '../styles/Profile.css'
+import '../styles/App.css'
 
 const Profile = ({ loginState }) => {
     const [entries, setEntries] = useState([])

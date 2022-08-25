@@ -1,4 +1,4 @@
-import '../Entry.css'
+import '../styles/Entry.css'
 import { useParams, useNavigate } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 

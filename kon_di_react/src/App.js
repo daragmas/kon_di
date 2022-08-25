@@ -1,10 +1,11 @@
 import NavBar from './components/Navbar';
-import './App.css';
+import './styles/App.css';
 import Home from './components/Home';
 import Login from './components/Login';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import Entry from './components/Entry'
+import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
 import { useState } from 'react';
 
@@ -31,7 +32,7 @@ function App() {
             <Route exact key={7} path=':entryid' />
           </Route>
         </Routes>
-        <p id='footer'>Site by <a href='https://www.linkedin.com/in/anastasiasirman/'>Anastasia Sirman</a> and <a href='https://www.linkedin.com/in/nathanielpwolf/'>Nate Wolf</a></p>
+        <Footer/>
       </Router>
     </div>
   );

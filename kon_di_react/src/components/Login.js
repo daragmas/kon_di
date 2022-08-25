@@ -1,5 +1,5 @@
-import '../Auth.css'
-import '../App.css'
+import '../styles/Auth.css'
+import '../styles/App.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
