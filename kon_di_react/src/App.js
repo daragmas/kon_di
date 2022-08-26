@@ -25,8 +25,8 @@ function App() {
         <Routes>
           <Route exact key={1} path='/' element={<Home />} />
           <Route exact key={2} path='/login' element={<Login onLoginChange={handleLoginChange} />} />
-          <Route exact key={3} path='/register' element={<Register />} />
-          <Route exact key={4} path='/signup' element={<Register />} />
+          <Route exact key={3} path='/register'  element={<Register onLoginChange={handleLoginChange}/>} />
+          <Route exact key={4} path='/signup' element={<Register onLoginChange={handleLoginChange}/>} />
           <Route exact key={5} path='/profile' element={<Profile loginState={loggedIn}/>} />
           <Route key={6} path='/entry' element={<Entry />}>
             <Route exact key={7} path=':entryid' />

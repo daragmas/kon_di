@@ -11,7 +11,10 @@ class EntryController < ApplicationController
         if token 
             decoded_token = JWT.decode token, nil, false
             user = User.find_by(username: decoded_token[0]["data"])
-            render json: Entry.where(user_id: user["id"])
+            entries = Entry.where(user_id: user["id"])
+            if entries
+                render json: entries
+            end
         else 
             render json: [{message: "Coudn't verify user", params: params}]
         end
