@@ -32,9 +32,9 @@ Rails.application.routes.draw do
   #edit email
   patch "/user/edit/email/:id", to: "user#edit_email"
   #create new user
-  post "/users", to: "user#new_user"
-
-
+  
+  
+  post "/auth/signup", to: "auth#sign_up"
   post '/auth/login', to: 'auth#login'
 
   #YAy Organization

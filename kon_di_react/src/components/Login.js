@@ -26,11 +26,15 @@ const Login = ({ onLoginChange }) => {
             body: JSON.stringify(data)
         })
         let res = await req.json()
+        console.log(res)
         if (req.ok){
-        let tommorow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
-        document.cookie = `hash=${res.hashed_user}; expires=` + tommorow.toUTCString()
+            let tommorow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
+            document.cookie = `hash=${res.hashed_user}; expires=` + tommorow.toUTCString()
+            onLoginChange(true)
+            navigate('/profile')
         }else {
             document.cookie = ''
+            window.Error("Invalid username or password")
         }
     }
     //Change cookie
@@ -45,13 +49,7 @@ const Login = ({ onLoginChange }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         getData()
-        if (document.cookie.includes('.')) {
-            navigate('/profile')
-            onLoginChange(true)
-        }
-        else {
-            window.Error("Invalid username or password")
-        }
+      
     }
 
     // console.log(document.cookie)
