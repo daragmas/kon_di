@@ -32,7 +32,7 @@ const NavBar = ({onLoginChange, loginState}) => {
 
     return (
         <nav className="navbar">
-            <div className='logo' >LOGO</div>
+            <img className='logo' src='kon_di_logo.png' alt='Logo'/>
             <ul className='nav-list'>
                 <NavLink style={{ textDecoration: 'none' }} to='/'><li className='nav-items btn-hover'>HOME</li></NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to='/about'><li className='nav-items btn-hover'>ABOUT</li></NavLink>
