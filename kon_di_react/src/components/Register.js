@@ -15,7 +15,7 @@ const Register = () => {
     }
 
         const postUser = async () => {
-            let req = await fetch('http://localhost:3000/users', {
+            let req = await fetch('http://localhost:3000/auth/signup', {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"
@@ -23,10 +23,12 @@ const Register = () => {
                 body: JSON.stringify(formChange)
             })
             let res = await req.json()
-            document.cookie = `hash=${res.hashed_user}`
+            console.log(res)
+            let tommorow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000));
+            document.cookie = `hash=${res.hashed_user}; expires=` + tommorow.toUTCString()
         }
-//Change cookie
-
+        //Change cookie
+        
         const handleSubmit = (e) => {
             e.preventDefault()
             postUser()
@@ -40,9 +42,9 @@ const Register = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                 <h3>Register</h3>
-                    <input type='username' name='username' placeholder='username' onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
-                    <input type='email' name='email' placeholder='email'onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
-                    <input type='password' name='passowrd' placeholder='password'onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
+                    <input type='username'required name='username' placeholder='username' onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
+                    <input type='email' name='email' required placeholder='email'onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
+                    <input type='password' name='password' required placeholder='password'onChange={(e)=> {handleChange(e.target.name, e.target.value)}}/>
                     <button>Register</button>
                 <h4>Already have an account? <span>LOGIN</span></h4>
                 </form>
