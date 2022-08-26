@@ -44,7 +44,7 @@ const Profile = ({ loginState }) => {
     const handleDeleteClick = async () => {
         window.confirm('Delete Entry?') ? await fetch(`http://localhost:3000/entries/delete/${selectedEntry.id}`, { method: "DELETE" }) : console.log('No Delete')
         getEntries()
-        setSelectedEntry({})
+        setSelectedEntry({ title: "Select an entry" })
         setRefresh(prev => !prev)
     }
 
