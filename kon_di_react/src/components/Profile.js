@@ -23,6 +23,7 @@ const Profile = ({ loginState }) => {
                 body: JSON.stringify({ user_id: user_id })
             })
             const res = await req.json()
+            console.log(res)
             setEntries(res)
         }
         catch {
